@@ -1,0 +1,41 @@
+# https://gitlab.wildberries.ru/devops/ci/templates/-/blob/master/README.md
+# Docs: https://docs-devops.wb.ru/cicd/hub.html
+.template_repo: &repo
+  project: &ci_tmpl "devops/ci/templates"
+  ref: &ci_tmpl_vers "v4.7.1"
+
+variables:
+  # Mandatory vars. Do not change this
+  CI_TMPL_PROJECT: *ci_tmpl
+  CI_TMPL_PROJECT_VERSION: *ci_tmpl_vers
+
+  # Trunk Based Development: main → DEV, feature-* → DEV (manual),
+  # release-* → STAGE + PROD (manual), tag v*.*.* → PROD (manual)
+  CI_TMPL_DEVELOPMENT_FLOW: "TBD"
+  # Feature-ветки собираются и раскатываются в DEV автоматически.
+  CI_TMPL_FEATURE_AUTO_BUILD: "true"
+  CI_TMPL_FEATURE_AUTO_DEPLOY: "true"
+
+  ALPINE_VER: "3.23"
+  JS_NODE_VER: "22"
+
+  COMMON_DEPLOY_CHART: "oci://harbor.wildberries.ru/devops/helm/charts/common-deploy"
+  CI_TMPL_HELM_CHARTS: "$COMMON_DEPLOY_CHART@v9.2.1"
+  CI_TMPL_HELM_RELEASE_NAMES: "web-setup"
+  # Namespace = 2nd level GitLab subgroup (wasabi/ds/web-setup → ds)
+  CI_TMPL_HELM_RELEASE_NAMESPACE: ds
+
+  CI_TMPL_KUBE_CLUSTERS_DEV: "k8s.dev-du"
+  # Документация требует минимум 2 prod-кластера
+  CI_TMPL_KUBE_CLUSTERS_PROD: "k8s.prod-el,k8s.prod-xc"
+
+  # Harbor project = root GitLab group (wasabi/ds/web-setup → wasabi)
+  REGISTRY_PROJECT: "wasabi"
+
+  CI_TMPL_LINT_TEST_STRICT: "true"
+  # Минимальный сетап: lint + typecheck, без unit-тестов
+  CI_TMPL_JS_TEST_JOB: "false"
+  CI_TMPL_JS_TYPECHECK_JOB: "true"
+
+include:
+  - { <<: *repo, file: /pipelines/js-ts.yml }

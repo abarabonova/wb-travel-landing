@@ -1,0 +1,101 @@
+# IDE 
+.vscode/
+.idea/
+*.iml
+
+# Логирование 
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Переменные окружения
+.env
+.env.*
+
+# Потенциальные хранилища секретов
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+id_rsa
+id_dsa
+id_ed25519
+id_ecdsa
+*.local
+*.env
+
+*.development
+*.production
+*.download
+*.example
+*.http
+
+# Артефакты оставшиеся после сборки
+dist/
+build/
+target/
+bin/
+out/
+coverage/
+*.out
+
+# Хранение зависимостей
+node_modules/
+
+
+# Для Python
+__pycache__/
+*.pyc
+.venv/
+env/
+venv/
+ENV/
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+
+# Для golang
+*.test
+coverage.txt
+.DS_Store
+
+# сохранённые образы
+*.tar
+
+# временные и тестовые файлы/директории
+tmp/
+temp/
+*.swp
+*.swo
+.sqlinit
+local/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.plan
+.terraformrc
+terraform.rc
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json

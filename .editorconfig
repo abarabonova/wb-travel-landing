@@ -1,0 +1,28 @@
+root = true
+
+[*]
+# кодировка
+charset = utf-8
+# фиксируем что строка вне зависимости от операционной системы разработки заканчивается на `\n`
+end_of_line = lf
+# Добавление пустой строки в конце файла
+insert_final_newline = true
+# Удаления лишних пробелов в конце строки
+trim_trailing_whitespace = true
+# Настройка отступов
+indent_style = space
+indent_size = 4
+
+[*.md]
+# в MD файлах отключаем удаление пробелов в конце строки
+trim_trailing_whitespace = false
+
+[Makefile]
+indent_style = tab
+
+# Настройки отсутпов для конкретных расширений файлов
+[*.{yml,yaml}]
+indent_size = 2
+
+[*.{json,js,ts}]
+indent_size = 2

@@ -1,0 +1,47 @@
+environment: prod-xc
+
+replicaCount: 1
+
+chartMeta:
+  owner: "zalesskiy.oleg"
+
+image:
+  repository: {{ .Helm.Release.Image }}
+  tag: {{ .Helm.Release.Tag }}
+  pullPolicy: IfNotPresent
+
+ports:
+  - name: http
+    containerPort: 80
+    protocol: TCP
+
+imagePullSecrets:
+  - name: gitlab-registry-secret
+  - name: harbor-registry-secret
+
+resources:
+  requests:
+    memory: "64Mi"
+    cpu: "20m"
+  limits:
+    memory: "256Mi"
+    cpu: "200m"
+
+service:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
+      name: http
+
+persistence:
+  enabled: true
+  version: v2
+  emptyDir:
+    volumes:
+      - name: "var-cache-nginx"
+        mountPath: /var/cache/nginx
+      - name: "run"
+        mountPath: /run/nginx

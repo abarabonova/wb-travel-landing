@@ -1,0 +1,28 @@
+---
+description: Pre-work checks for designers — dependencies and feature branch before coding
+alwaysApply: true
+---
+
+# Designer workflow (before coding)
+
+Run these checks at the start of every session that implements or changes the prototype.
+
+## 1. Dependencies
+
+- Check that dependencies are installed (`node_modules` present / project can start).
+- If missing or the app fails to start because of deps — install with `npm ci` (prefer) or `npm install`.
+- Do not reinstall when deps are already present and working.
+
+## 2. Branch
+
+- Check the current git branch before editing.
+- Never commit or push work directly on `main`.
+- If the designer is on `main` (or another protected/base branch):
+  1. Propose a branch name in the format `feature-short-description` (see README).
+  2. Agree the name with the designer.
+  3. Only then create the branch and switch to it (`git switch -c …`).
+- If already on a valid `feature-*` branch, continue there.
+
+## 3. Then proceed
+
+Only after deps and branch are OK: read Figma / implement the mockup / run `npm run dev` and checks from README.

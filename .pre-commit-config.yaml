@@ -1,0 +1,6 @@
+# Инструкия по настройке/исправлению проблем - https://wiki.wb.ru/space/540/devsecops/page/26/6.1%20-%20%F0%9F%94%8D%20Poisk%20sekretov%20na%20etape%20pre-commit
+repos:
+    - repo: git@gitlab.wildberries.ru:devops/ci/security-utils.git
+      rev: main
+      hooks:
+        - id: gitleaks

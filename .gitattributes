@@ -1,0 +1,25 @@
+# Общая настройка переноса нормализации для текстовых файлов
+* text=auto eol=lf
+
+# Перечень бинарных файлов для упрощения обработки diff|merge (можно/нужно дополнять)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.gz  binary
+*.7z  binary
+*.tar binary
+*.jar binary
+*.war binary
+*.exe binary
+*.dll binary
+*.so  binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.elf binary
+*.bmp binary
+*.webp binary 
